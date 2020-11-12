@@ -2,25 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />  -->
+    
+    <!--Import Google Material Icon Font-->
+    <!-- <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    /> -->
+    <!-- Compiled and minified CSS -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />  -->
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Delicious Recipes </title>
 </head>
 <body>
     <header>
-        <h1>818 express Auth</h1>
-    </header>
-    <nav>
-        <ul>
-            <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
-            <% } else { %>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <% } %>
-        </ul>
-    </nav>
+        <nav class="navbar">
+            <div>  
+                <h1 class="title">≋D≋e≋l≋i≋c≋i≋o≋u≋s≋ </br>≋R≋e≋c≋i≋p≋e≋s≋</h1>
+                <ul>
+                    <% if (!currentUser) { %>  
+                        <li class="signup"><a href="/auth/signup">Signup</a></li>
+                        <li class="profile"><a href="/auth/login">Login</a></li>
+                        <% } else { %>
+                            <li class="signup"><a href="/auth/logout">Logout</a></li>
+                            <li class="profile"><a href="/profile">Profile</a></li>
+                            <% } %>
+                        </ul>
+            </div>
+        </nav>
+    </header> 
+
     <%- include('partials/alerts') %>
     <%- body %>
+    
+<footer class="footer">Develop by ClairVisual</footer>
+    
 </body>
 </html>

@@ -1,0 +1,15 @@
+<h1>Recipe results</h1>
+
+<ul class="care">
+    <% result.forEach(result=>{%>
+        <img src="<%= result.recipe.image %>"width=200>
+        <li class="care"><%= result.recipe.label %>
+        </li></br>
+        <li class="care">
+            <p>From:<%= result.recipe.source %></p>
+            <a href="<%= result.recipe.url %>">Get Recipe</a>
+        </li>
+        <p></p>
+        
+    <% }) %>
+</ul>

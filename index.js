@@ -6,10 +6,11 @@ const session = require('express-session')
 const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
-
+const axios = require("axios").default;
 //  setup ejs and ejs layouts
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
+app.use(express.static('public'));
 
 // body parser middleware (this makes req.body work)
 app.use(express.urlencoded({extended: false}))
@@ -35,16 +36,23 @@ app.use((req, res, next)=>{
     next()
 })
 
+
 // use controllers
 app.use('/auth', require('./controllers/auth.js'))
+app.use('/recipes', require('./controllers/recipes.js'))
+// app.use('/favorites', require('./controllers/favorites.js'))
 
 app.get('/', (req, res)=>{
   res.render('home')
 })
 
+
+
 app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
   })
+
+  
 
 app.listen(process.env.PORT, () => {
     console.log('you\'re listening to the spooky sounds of port 8000')

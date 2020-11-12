@@ -1,3 +1,15 @@
+
 <h2>
-    <%= currentUser.name %>'s Profile
+    <header>
+        <a href="/"><%= currentUser.name %>'s Profile</a>
+    </header>
+    
 </h2>
+
+<div class="box">
+    <form action="/faves">
+        <!-- <label for="recipeName">Enter recipe</label> -->
+
+        <input type="submit" value="favourites" id="favs">
+    </form>
+</div>
