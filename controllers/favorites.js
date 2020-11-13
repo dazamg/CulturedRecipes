@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-// const axios = require('axios');
+const axios = require('axios');
 const db = require('../models');
+const isLoggedIn = require('../middleware/isLoggedIn')
+
+
 
 // Favorites route
-router.get('/', (req, res) =>{
+router.get('/',isLoggedIn, (req, res) =>{
   // TODO: Get all records from the DB and render to view
   db.recipe.findAll()
   .then(favorites =>{
@@ -16,7 +19,7 @@ router.get('/', (req, res) =>{
 })
 
 //Favorites post route
-router.post('/', (req, res) =>{
+router.post('/',isLoggedIn, (req, res) =>{
   // TODO: Get form data and add a new record to DB
   console.log("Yep it work\s", req.body)
   db.recipe.findOrCreate({
@@ -40,7 +43,9 @@ router.post('/', (req, res) =>{
   })
   });
 
-  // Delete route
+
+
+//  Delete route
 // router.get('/:idx', (req, res)=>{
 //   var options = {
 //     method: 'GET',
@@ -51,7 +56,6 @@ router.post('/', (req, res) =>{
 //       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
 //     }
 //   };
-//   console.log("Helle", options)
   
 //   axios.request(options).then(function (response) {
 //       // console.log(response.data);
@@ -63,17 +67,29 @@ router.post('/', (req, res) =>{
 //   });
 // })
 
-//   router.delete('/:idx', function(req, res) {
-//     // TODO: Get form data and remove a record from DB
-//     db.recipe.destroy({
-//       where: {id: req.params.idx},
-//     })
-//     .then(numRowsDeleted=>{
-//       console.log(numRowsDeleted)
-//       res.redirect('/favorites')
-//     })
-//     .catch(err=> {
-//       console.log('oops', err)
-//     })
-// })
+// router.get('/:idx', (req, res) =>{
+//   let pokemonLink = `https://edamam-recipe-search.p.rapidapi.com/${req.params.idx}`;
+//   axios.get(pokemonLink)
+//   .then(response=> {
+//     res.render('show', {recipe: response.data.hits.recipe})
+//     console.log(response.data.hits.recipe)
+//   })
+//   .catch(err=> {
+//     console.log('can/t find error', err)
+//   });
+// });
+
+router.delete('/:id',isLoggedIn, (req, res) =>{
+    // TODO: Get form data and remove a record from DB
+  db.recipe.destroy({
+    where: {id: req.params.id},
+  })
+  .then(numRowsDeleted=>{
+    console.log(numRowsDeleted)
+    res.redirect('/favorites')
+  })
+  .catch(err=> {
+    console.log('oops', err)
+  })
+})
 module.exports = router;

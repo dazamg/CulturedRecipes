@@ -4,6 +4,7 @@ const axios = require('axios');
 const db = require('../models');
 
 
+
 router.get('/', (req, res)=>{
     db.recipe.findOrCreate()
     var options = {
@@ -25,6 +26,5 @@ router.get('/', (req, res)=>{
         console.error(error);
     });
   })
-
 
 module.exports = router;

@@ -5,7 +5,7 @@
        <li> <%= favorites.name %> </li>
        <li> <img src="<%= favorites.img_url %>"width=200> </li>
 
-       <form method="POST" action="/favorites/<%= favorites.id %>/?_method=DELETE">
+       <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
            <input type="submit" value="Delete">
        </form>
     <% }) %>
