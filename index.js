@@ -40,13 +40,15 @@ app.use((req, res, next)=>{
 // use controllers
 app.use('/auth', require('./controllers/auth.js'))
 app.use('/recipes', require('./controllers/recipes.js'))
-// app.use('/favorites', require('./controllers/favorites.js'))
+app.use('/favorites', require('./controllers/favorites.js'))
 
 app.get('/', (req, res)=>{
   res.render('home')
 })
 
-
+// app.get('/favorites', (req, res)=>{
+//   res.render('favorites')
+// })
 
 app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')

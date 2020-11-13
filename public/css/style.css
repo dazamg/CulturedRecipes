@@ -19,15 +19,17 @@ body {
     -webkit-background-size: cover;
     background-size: cover;
     color: red;
-    font-family: 'Poppins';
+    font-family: 'Dancing Script', cursive;
 }
+
+/* wrapper 1 sign up form*/
 .wrapper {
     width: 400px;
     height: 320px;
     color: #000;
-    top: 50%;
+    top: 59%;
     left: 50%;
-    padding: 60px 30px;
+    padding: 15px 30px;
     position: absolute;
     transform: translate(-50%,-50%);
     box-sizing: border-box;
@@ -41,7 +43,7 @@ h2 {
     color: #fff;
     text-align: center;
     margin-bottom:  8%;
-    font-family: 'Courgette';
+    font-family: 'Dancing Script', cursive;
 }
 .wrapper input {
     width: 100%;
@@ -79,6 +81,59 @@ h2 {
     color: #fff;
     opacity: 1;
 }
+
+/* wrapper 2 login form*/
+.wrapper_one {
+    width: 400px;
+    height: 320px;
+    color: #000;
+    top: 59%;
+    left: 50%;
+    padding: 55px 30px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    box-shadow: 4px 4px 35px rgb(22, 189, 108);
+}
+
+.wrapper_one input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.wrapper_one input[type=email], .wrapper input[type=password] {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    opacity: 1;
+    color: rgb(219, 199, 199);
+}
+
+.wrapper_one input[type=submit] {
+    border: none;
+    outline: none;
+    height: 40 px;
+    background: #f6648b;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wrapper_one input[type=submit] :hover {
+    cursor: pointer;
+}
+.wrapper_one a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.8;
+}
+.wrapper_one a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
 .bottom-text {
     color: #fff;
 }
@@ -89,34 +144,6 @@ h2 {
 .bottom-text a {
     float: right;
 }
-
-/* .socials {
-    margin-top: 12%;
-    text-align: center;
-}
-.socials a {
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    margin: 0 5px;
-} */
-/* .socials a:nth-child(1){
-    background: #3b599;
-}
-.socials a:nth-child(2){
-    background: #55acee;
-}
-.socials a:nth-child(3){
-    background: #bd081c;
-} */
-/* .socials a:nth-child(4){
-    background: #0077b5;
-}
-.socials a i {
-    padding: 8px 0;
-} */
 
 #overlay-area {
     position: absolute;
@@ -142,6 +169,7 @@ h2 {
     position: relative;
     bottom: 30px;
     color: black;
+    float: left;
 }
 
  
@@ -184,3 +212,11 @@ h4 {
     color: #fff;
 }
 
+.bc {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden;  */
+    /* background-color: #333333; */ 
+}
+  

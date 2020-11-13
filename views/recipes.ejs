@@ -2,6 +2,11 @@
 
 <ul class="care">
     <% result.forEach(result=>{%>
+        <form method="POST" action="/favorites">
+            <input hidden type="text" name="name" value="<%= result.recipe.label %>">
+            <input hidden type="text" name="img_url" value="<%= result.recipe.image %>">
+            <button class="btn btn-primary" type="submit">Add to Favorite</button>
+        </form>
         <img src="<%= result.recipe.image %>"width=200>
         <li class="care"><%= result.recipe.label %>
         </li></br>
@@ -9,7 +14,10 @@
             <p>From:<%= result.recipe.source %></p>
             <a href="<%= result.recipe.url %>">Get Recipe</a>
         </li>
-        <p></p>
+        <p>
+          calories:<%= result.recipe.calories %> 
+        </p>
+        <%= result.recipe.bookmarked %>
         
     <% }) %>
 </ul>
