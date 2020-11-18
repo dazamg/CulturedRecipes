@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn')
 
-
+// get route to get data from my api
 router.get('/',isLoggedIn, (req, res)=>{
     var options = {
       method: 'GET',
@@ -25,14 +24,5 @@ router.get('/',isLoggedIn, (req, res)=>{
         console.error(error);
     });
 })
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

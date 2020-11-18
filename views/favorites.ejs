@@ -14,10 +14,12 @@
                 <li> <%= favorites.name %> </li>
                 <li><a href="<%= favorites.url %>">Get Recipe</a></li>
                 <li> <img src="<%= favorites.img_url %>"width=200> </li>
-        
+                
+                <!-- // post form to delete a recipe on my faves list -->
                 <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
                     <input type="submit" value="Delete">
                 </form>
+                 <!-- // post form to leave a comment from the faves list -->
                 <form method="POST" action="/favorites/<%= favorites.id %>/comment">
                 <div class="form-group">   
                     <input type="text" class="form-control" id="commentContent" name="content" placeholder="Leave a review" required>     

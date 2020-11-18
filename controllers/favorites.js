@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn')
 
@@ -65,7 +64,8 @@ db.recipe.destroy({
 router.get('/:id/comments', isLoggedIn, (req, res) =>{
   db.comment.findAll({
     where: {userId: req.user.id,
-      recipeId: req.params.id}
+      recipeId: req.params.id},
+      include: [db.user] 
   })
   .then(foundComments =>{
     res.render('comments', {comments: foundComments})
@@ -78,7 +78,8 @@ router.post('/:id/comment',isLoggedIn, (req,res)=> {
   db.comment.create({
           userId: req.user.id,
           content: req.body.content,
-          recipeId: req.params.id
+          recipeId: req.params.id, 
+          include: [db.user] 
   })
   .then(commentcreated =>{
       console.log('Hey', commentcreated)
@@ -105,29 +106,18 @@ db.comment.destroy({
 })
 })
 
-//Edit comment
-// router.put('/:id/comment', (req, res) => {
-//   console.log("@@@@@@@@@@@-fired")
-//   db.comment.update({
-//     content: req.body.content,
-//     where: {id: req.params.id}
-//   }).then(editComment=>{
-//   console.log(editComment)
-//   res.redirect('/favorites')
-//   })
-// })
-
+// Edit/update a comment from the comment page
 router.put('/:id/comment', async (req, res, next) => {
-  let travelNote = await db.comment.findByPk(req.params.id).catch(e => {
+  let recipeComment = await db.comment.findByPk(req.params.id).catch(e => {
       console.log(e.message)
-      res.redirect(`/favourites/${req.params.id}/comments`) // this is redirecting in case of a catch error
+      res.redirect(`/favorites/${req.params.id}/comments`) // this is redirecting in case of a catch error
   })
-  if (!travelNote){
+  if (!recipeComment){
       console.log("err")
-      res.redirect(`/favourites/${req.params.id}/comments`) // this is redirecting in case of a catch error
+      res.redirect(`/favorites/${req.params.id}/comments`) // this is redirecting in case of a catch error
   }
-  travelNote.content = req.body.content
-  travelNote.save()
+  recipeComment.content = req.body.content
+  recipeComment.save()
   res.redirect('/favorites')
 })
 

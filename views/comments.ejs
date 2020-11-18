@@ -12,6 +12,7 @@
   
     <ul>
       <% comments.forEach(comment => { %>
+        <!-- // post form to edit a comment -->
         <form method="POST" action="/favorites/<%= comment.id %>/comment/?_method=PUT">
           <!-- <label for="Comment">Write a new Comment</label> -->
           <input type="text" name="content" id="editcomment" value="<%= comment.name %>" placeholder="Write a new comment">
@@ -19,7 +20,7 @@
           <input type="submit" value="update">
         </form>
           <li class="content"> <%= comment.content %> </li>
-        
+          <!-- // post form to delete a comment on from the comment page -->
           <form method="POST" action="/favorites/<%= comment.id %>/comment/?_method=DELETE">
             <input type="submit" value="Delete" id="comments">
           </form></br>

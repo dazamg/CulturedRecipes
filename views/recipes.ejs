@@ -9,7 +9,7 @@
     
     <h1>Recipe results</h1>
     <div>
-        <!-- <ul class="dog"> -->
+        <!-- // recipe show page -->
         <% result.forEach(result=>{%>
             <div class="mom">
                 <p class="dogo">
@@ -17,7 +17,8 @@
                     <a href="<%= result.recipe.url %>">Get Recipe</a>
                 </p></br>  
                 <p class="dogo"><%= result.recipe.label %></br>
-                </p></br><p class="dogo">
+                </p></br>
+                <p class="dogo">
                     Calories: <%= Math.floor(result.recipe.calories) %>
                 </p></br>
                 <p class="dogo">
@@ -25,6 +26,7 @@
                 </p> </br>
                 <p>
                     <div class="btn-primary">
+                        <!-- // favorite button to add to favorite list -->
                         <form method="POST" action="/favorites">
                             <input hidden type="text" name="name" value="<%= result.recipe.label %>">
                             <input hidden type="text" name="img_url" value="<%= result.recipe.image %>">
