@@ -10,7 +10,8 @@
 * HTML
 * CSS
 * Express and nodejs
-* sql
+* PostgreSQL
+* Sequelize
 
 ## Api
 * https://rapidapi.com/edamam/api/recipe-search-and-diet/endpoints
@@ -111,3 +112,27 @@ sequelize db:create <insert db name here>
 sequelize db:migrate
 ```
 6. ADD `SESSION_SECRET` and `PORT` environment variables in a `.env` file
+
+|-------|----------------------|-----------------------------------------|
+| Crud  |          Route       |              Function                   | 
+|-------|----------------------|-----------------------------------------|
+| GET   |   /                  |           home page                     |
+| GET   |   /auth/login        |           renders login page            | 
+| POST  |   /auth/login        |           signs in existing user        | 
+| GET   |   /auth/signup       |           renders sign up page          |
+| POST  |   /auth/signup       |          creates new user in database   |
+| GET   |   /auth/logout       |           logs out user                 |
+| GET   |   /recipes           |           loads full recipes database   |
+| GET   |   /favorites         |      loads user favorites database      |
+| POST  |   /favorites         |  adds a recipe to the user favorite page|
+| DELETE| /favorites/:id       |  deletes a recipe from the favorite page|
+| GET   |favorites/:id/comments|       adds comment to individual recipe |
+| PUT   |favorites/:id/comments|     edit a comment to individual recipe |
+| Delete|favorites/:id/comments|    deletes comment to individual recipe |
+| GET   |   /profile           |           user's profile page           |
+| GET   |   /vegan             |     loads full vegan recipes database   |
+| GET   |   /drinks            |     loads full drinks recipes database  |
+| GET   |   /meat              |     loads full meat recipes database    |
+| GET   |   /deserts           |     loads full deserts recipes database |
+|-------|----------------------|-----------------------------------------|
+
