@@ -140,9 +140,8 @@ sequelize db:migrate
 
 | Crud  |         Schema       |              Association                   | 
 |----------|------------------------|---------------------------------------|
-| recipe   | name,img_url,url,source| belongsToMany user through recipeuser 
-hasMany comments|
+| recipe   | name,img_url,url,source| belongsToMany user through recipeuser hasMany comments|
 |recipeuser|  userId,recipeId       |                                       |  
-| comment  |name,content,recipeId,userId|  belongs to recipes and user      |          |    user  | name,email,password    |     belongsToMany recipe through recipeuser 
-hasMany comments| 
+| comment  |name,content,recipeId,userId|  belongs to recipes and user      |          
+|    user  | name,email,password    |     belongsToMany recipe through recipeuser hasMany comments| 
 
