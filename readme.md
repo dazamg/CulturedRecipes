@@ -113,7 +113,7 @@ sequelize db:migrate
 ```
 6. ADD `SESSION_SECRET` and `PORT` environment variables in a `.env` file
 
-|-------|----------------------|-----------------------------------------|
+
 | Crud  |          Route       |              Function                   | 
 |-------|----------------------|-----------------------------------------|
 | GET   |   /                  |           home page                     |
@@ -134,5 +134,5 @@ sequelize db:migrate
 | GET   |   /drinks            |     loads full drinks recipes database  |
 | GET   |   /meat              |     loads full meat recipes database    |
 | GET   |   /deserts           |     loads full deserts recipes database |
-|-------|----------------------|-----------------------------------------|
+
 
