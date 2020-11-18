@@ -1,11 +1,11 @@
 
 <h2>
-    <header>
-        <a href="/"><%= currentUser.name %>'s Profile</a>
+    <header class="profile_header">
+        <%= currentUser.name.toUpperCase() %>'s Profile</a>
     </header>
     
 </h2>
 
 <div class="box">
-    <a href="/favorites">Favorites</a>
+ <h3 class="profile_one">Favorites: <a href="/favorites">Show me</a></h3>   
 </div>

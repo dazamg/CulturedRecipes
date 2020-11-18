@@ -9,9 +9,13 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 // Favorites route
 router.get('/',isLoggedIn, (req, res) =>{
   // TODO: Get all records from the DB and render to view
-  db.recipe.findAll()
-  .then(favorites =>{
-      res.render('favorites', {favorites: favorites})
+  db.user.findOne({
+    where: {id: req.user.id},
+    include: [db.recipe, db.comment]
+  })
+  .then(user =>{
+    console.log(user)
+      res.render('favorites', {favorites: user.recipes})
   })
   .catch((error) => {
       console.log(error)
@@ -26,70 +30,106 @@ router.post('/',isLoggedIn, (req, res) =>{
     where: {
       name: req.body.name,
       img_url: req.body.img_url,
+      source: req.body.source,
+      url: req.body.url    
     },
-    // include: [db.user]
+    include: [db.user] 
   })
   .then(([recipe, created])=>{
-    db.user.findOne({
-        where: {id: req.session.passport.user}
-    }).then(user=>{
-        user.addRecipe(recipe)
-        console.log('User ' + user.name + ' favorited ' + recipe.name);
+    req.user.addRecipe(recipe).then(newRelation=>{
+      res.redirect('/favorites')
     })
-    res.redirect('favorites')
-})
+  })
   .catch(err => {
       console.log('Something went wrong', err)
   })
-  });
+});
 
 
-
-//  Delete route
-// router.get('/:idx', (req, res)=>{
-//   var options = {
-//     method: 'GET',
-//     url: 'https://edamam-recipe-search.p.rapidapi.com/search',
-//     params: {q: req.query.q},
-//     headers: {
-//       'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
-//       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
-//     }
-//   };
-  
-//   axios.request(options).then(function (response) {
-//       // console.log(response.data);
-//       let results = response.data
-//       console.log(results)
-//         res.render('show', {result: results})
-//   }).catch(function (error) {
-//       console.error(error);
-//   });
-// })
-
-// router.get('/:idx', (req, res) =>{
-//   let pokemonLink = `https://edamam-recipe-search.p.rapidapi.com/${req.params.idx}`;
-//   axios.get(pokemonLink)
-//   .then(response=> {
-//     res.render('show', {recipe: response.data.hits.recipe})
-//     console.log(response.data.hits.recipe)
-//   })
-//   .catch(err=> {
-//     console.log('can/t find error', err)
-//   });
-// });
-
+// delete a recipe from the favorite page
 router.delete('/:id',isLoggedIn, (req, res) =>{
-    // TODO: Get form data and remove a record from DB
-  db.recipe.destroy({
-    where: {id: req.params.id},
+db.recipe.destroy({
+  where: {id: req.params.id},
+})
+.then(numRowsDeleted=>{
+  console.log(numRowsDeleted)
+  res.redirect('/favorites')
+})
+.catch(err=> {
+  console.log('oops', err)
+})
+})
+
+
+// gets all the comments and render it to the comments show page
+router.get('/:id/comments', isLoggedIn, (req, res) =>{
+  db.comment.findAll({
+    where: {userId: req.user.id,
+      recipeId: req.params.id}
   })
-  .then(numRowsDeleted=>{
-    console.log(numRowsDeleted)
-    res.redirect('/favorites')
-  })
-  .catch(err=> {
-    console.log('oops', err)
+  .then(foundComments =>{
+    res.render('comments', {comments: foundComments})
   })
 })
+
+// Creates a new comment
+router.post('/:id/comment',isLoggedIn, (req,res)=> {
+  console.log("Adding a comment")
+  db.comment.create({
+          userId: req.user.id,
+          content: req.body.content,
+          recipeId: req.params.id
+  })
+  .then(commentcreated =>{
+      console.log('Hey', commentcreated)
+      res.redirect(`/favorites/${req.params.id}/comments`)
+  })
+  .catch(err => {
+      console.log('Something went wrong', err)
+  })
+})
+
+
+//Deletes a comment from the comment page
+router.delete('/:id/comment',isLoggedIn, (req, res) =>{
+  // TODO: Get form data and remove a record from DB
+db.comment.destroy({
+  where: {id: req.params.id},
+})
+.then(numRowsDeleted=>{
+  console.log(numRowsDeleted)
+  res.redirect('/favorites')
+})
+.catch(err=> {
+  console.log('oops', err)
+})
+})
+
+//Edit comment
+// router.put('/:id/comment', (req, res) => {
+//   console.log("@@@@@@@@@@@-fired")
+//   db.comment.update({
+//     content: req.body.content,
+//     where: {id: req.params.id}
+//   }).then(editComment=>{
+//   console.log(editComment)
+//   res.redirect('/favorites')
+//   })
+// })
+
+router.put('/:id/comment', async (req, res, next) => {
+  let travelNote = await db.comment.findByPk(req.params.id).catch(e => {
+      console.log(e.message)
+      res.redirect(`/favourites/${req.params.id}/comments`) // this is redirecting in case of a catch error
+  })
+  if (!travelNote){
+      console.log("err")
+      res.redirect(`/favourites/${req.params.id}/comments`) // this is redirecting in case of a catch error
+  }
+  travelNote.content = req.body.content
+  travelNote.save()
+  res.redirect('/favorites')
+})
+
+
 module.exports = router;

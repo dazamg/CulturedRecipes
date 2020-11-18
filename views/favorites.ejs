@@ -1,12 +1,32 @@
-<h2>My Go to recipes</h2>
-
-<ul>
-    <% favorites.forEach(favorites => { %>
-       <li> <%= favorites.name %> </li>
-       <li> <img src="<%= favorites.img_url %>"width=200> </li>
-
-       <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
-           <input type="submit" value="Delete">
-       </form>
-    <% }) %>
-</ul> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="faves">   
+    <h2>My Go to recipes</h2>
+    <div>
+        <ul>
+            <% favorites.forEach(favorites => { %>
+                <li> From: <%= favorites.source %> </li>
+                <li> <%= favorites.name %> </li>
+                <li><a href="<%= favorites.url %>">Get Recipe</a></li>
+                <li> <img src="<%= favorites.img_url %>"width=200> </li>
+        
+                <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
+                    <input type="submit" value="Delete">
+                </form>
+                <form method="POST" action="/favorites/<%= favorites.id %>/comment">
+                <div class="form-group">   
+                    <input type="text" class="form-control" id="commentContent" name="content" placeholder="Leave a review" required>     
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form></br>
+            <% }) %>
+    
+        </ul> 
+    </div>
+</body>
+</html>

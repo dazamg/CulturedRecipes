@@ -48,15 +48,107 @@ app.use(methodOverride('_method'));
 app.use('/auth', require('./controllers/auth.js'))
 app.use('/recipes', require('./controllers/recipes.js'))
 app.use('/favorites', require('./controllers/favorites.js'))
+// app.use('/comments', require('./controllers/comments.js'))
 
 // Home page
 app.get('/', (req, res)=>{
   res.render('home')
 })
 
+
+
 app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
   })
+
+//Vegan route
+app.get('/vegan', (req, res)=>{
+  var options = {
+    method: 'GET',
+    url: 'https://edamam-recipe-search.p.rapidapi.com/search',
+    params: {q:'vegan'},
+    headers: {
+      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+      console.log(response.data);
+      let results = response.data.hits
+      console.log(results)
+        res.render('category/vegan', {result: results})
+  }).catch(function (error) {
+      console.error(error);
+  });
+})
+
+//drinks route
+app.get('/drinks', (req, res)=>{
+  var options = {
+    method: 'GET',
+    url: 'https://edamam-recipe-search.p.rapidapi.com/search',
+    params: {q:'drinks'},
+    headers: {
+      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+      console.log(response.data);
+      let results = response.data.hits
+      console.log(results)
+        res.render('category/drinks', {result: results})
+  }).catch(function (error) {
+      console.error(error);
+  });
+})
+
+//Meat route
+app.get('/meat', (req, res)=>{
+  var options = {
+    method: 'GET',
+    url: 'https://edamam-recipe-search.p.rapidapi.com/search',
+    params: {q:'meat'},
+    headers: {
+      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+      console.log(response.data);
+      let results = response.data.hits
+      console.log(results)
+        res.render('category/meat', {result: results})
+  }).catch(function (error) {
+      console.error(error);
+  });
+})
+
+//Deserts route
+app.get('/deserts', (req, res)=>{
+  var options = {
+    method: 'GET',
+    url: 'https://edamam-recipe-search.p.rapidapi.com/search',
+    params: {q:'deserts'},
+    headers: {
+      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+      console.log(response.data);
+      let results = response.data.hits
+      console.log(results)
+        res.render('category/deserts', {result: results})
+  }).catch(function (error) {
+      console.error(error);
+  });
+})
+
 
 app.listen(process.env.PORT, () => {
     console.log('you\'re listening to the spooky sounds of port 8000')

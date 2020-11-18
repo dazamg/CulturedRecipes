@@ -14,8 +14,11 @@ module.exports = {
       img_url: {
         type: Sequelize.STRING
       },
-      recipeId: {
-        type: Sequelize.INTEGER
+      url: {
+        type: Sequelize.STRING
+      },
+      source: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

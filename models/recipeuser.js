@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   recipeuser.init({
     userId: DataTypes.INTEGER,
     recipeId: DataTypes.INTEGER
+    
   }, {
     sequelize,
     modelName: 'recipeuser',

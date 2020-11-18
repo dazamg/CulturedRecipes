@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body class="comments_container">
+
+  
+    <h1 class="comments">Comments</h1>
+  
+    <ul>
+      <% comments.forEach(comment => { %>
+        <form method="POST" action="/favorites/<%= comment.id %>/comment/?_method=PUT">
+          <!-- <label for="Comment">Write a new Comment</label> -->
+          <input type="text" name="content" id="editcomment" value="<%= comment.name %>" placeholder="Write a new comment">
+      
+          <input type="submit" value="update">
+        </form>
+          <li class="content"> <%= comment.content %> </li>
+        
+          <form method="POST" action="/favorites/<%= comment.id %>/comment/?_method=DELETE">
+            <input type="submit" value="Delete" id="comments">
+          </form></br>
+      <% }) %>
+      
+    </ul> 
+</body>
+</html>
+ 

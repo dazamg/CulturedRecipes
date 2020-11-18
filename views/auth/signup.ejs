@@ -1,20 +1,31 @@
-<div class="wrapper">
-    <h2 class="new">
-        SignUp 
-    </h2>
-    <form method="POST" action="/auth/signup">
-        <label for="new name">Name</label>
-        <input type="text" name="name" id="new-name" placeholder="Username">
-        <label for="new email">Email</label>
-        <input type="email" name="email" id="new-email" placeholder="Email">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="signup_container">
     
-        <label for="new password">Password</label>
-        <input type="password" name="password" id="new-password" placeholder="Password">
-    
-        <input type="submit" value="Sign Up">
-        <div class="bottom-text">
-            <h4>Already a Member?<a href="/auth/login">Log In</a></h4>   
-        </div>
-    
-    </form>
-</div>
+    <div class="wrapper">
+        <h2 class="new">
+            SignUp 
+        </h2>
+        <form method="POST" action="/auth/signup">
+            <label for="new name">Name</label>
+            <input type="text" name="name" id="new-name" placeholder="Username">
+            <label for="new email">Email</label>
+            <input type="email" name="email" id="new-email" placeholder="Email">
+        
+            <label for="new password">Password</label>
+            <input type="password" name="password" id="new-password" placeholder="Password">
+        
+            <input type="submit" value="Sign Up">
+            <div class="bottom-text">
+                <h4>Already a Member?<a href="/auth/login">Log In</a></h4>   
+            </div>
+        
+        </form>
+    </div>
+</body>
+</html>

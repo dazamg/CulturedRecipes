@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const db = require('../models');
+const isLoggedIn = require('../middleware/isLoggedIn')
 
 
-
-router.get('/', (req, res)=>{
-    db.recipe.findOrCreate()
+router.get('/',isLoggedIn, (req, res)=>{
     var options = {
       method: 'GET',
       url: 'https://edamam-recipe-search.p.rapidapi.com/search',
@@ -25,6 +24,15 @@ router.get('/', (req, res)=>{
     }).catch(function (error) {
         console.error(error);
     });
-  })
+})
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
