@@ -179,6 +179,10 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    background-color: #ebf0fe;
+    background-image: linear-gradient(43deg, #ebf0fe 0%, #664563 46%, #FFCC70 100%);
+    padding: 0.3rem;
+
    }
 #Search {
     cursor: pointer;
@@ -247,17 +251,7 @@ h3 {
     display: inline-block;
     
 }
-/* .container::-webkit-scrollbar{
-    width: 0;
-}
-.container .item{
-    width: 110px;
-    height: 110px;
-    line-height: 110px;
-    text-align: center;
-    background-color: white;
-    margin-right: 2px;
-} */
+
 .category {
     color: white;
     display: inline-block;

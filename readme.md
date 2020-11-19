@@ -1,7 +1,8 @@
 # Delicious Recipes
 
 ### Demo App:
-
+* https://culturedrecipes.herokuapp.com/
+* Test: email:made@name.com password:999999999
 
 ## Concept:
 * A recipe search and diet app. A user suppose to be able to search for a recipe, see the intructions to that recipe and add it to their list
@@ -29,6 +30,11 @@
 
 ## Approach Taken
 * What is the app minimal requirements:
+* Setup Auth
+Utilized auth, including hashed passwords and an authorization flow.
+* Planned out features and functionality
+* Draw a wireframe
+
 * 
 
 
