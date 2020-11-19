@@ -68,7 +68,7 @@ app.get('/vegan', (req, res)=>{
     url: 'https://edamam-recipe-search.p.rapidapi.com/search',
     params: {q:'vegan'},
     headers: {
-      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-key': `${process.env.API_KEY}`,
       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
     }
   };
@@ -90,7 +90,7 @@ app.get('/drinks', (req, res)=>{
     url: 'https://edamam-recipe-search.p.rapidapi.com/search',
     params: {q:'drinks'},
     headers: {
-      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-key': `${process.env.API_KEY}`,
       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
     }
   };
@@ -112,7 +112,7 @@ app.get('/meat', (req, res)=>{
     url: 'https://edamam-recipe-search.p.rapidapi.com/search',
     params: {q:'meat'},
     headers: {
-      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-key': `${process.env.API_KEY}`,
       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
     }
   };
@@ -134,7 +134,7 @@ app.get('/deserts', (req, res)=>{
     url: 'https://edamam-recipe-search.p.rapidapi.com/search',
     params: {q:'deserts'},
     headers: {
-      'x-rapidapi-key': '110645db3emsh1beb6011bd85e24p13d962jsn34d6b5130ec7',
+      'x-rapidapi-key': `${process.env.API_KEY}`,
       'x-rapidapi-host': 'edamam-recipe-search.p.rapidapi.com'
     }
   };
