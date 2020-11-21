@@ -34,9 +34,11 @@
 Utilized auth, including hashed passwords and an authorization flow.
 * Planned out features and functionality
 * Draw a wireframe
-
-* 
-
+* Got database running with models and associations.
+* Integrated recipe API so that users could can search for a recipe
+*  Stubbed out Routes and completed the get, post, put, and delete functionality
+* Protected my routes so users won't be able to access each other profile, faves and delete comments
+* Completed MVP level functionality
 
 #### User stories
 * User can be able to signUp or login into the website
