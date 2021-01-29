@@ -5,27 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body class="faves">   
+<body>  
     <h2>My Go to recipes</h2>
     <div>
-        <ul>
+        <ul class="article-listing">
+            
             <% favorites.forEach(favorites => { %>
-                <li> From: <%= favorites.source %> </li>
-                <li> <%= favorites.name %> </li>
-                <li><a href="<%= favorites.url %>">Get Recipe</a></li>
-                <li> <img src="<%= favorites.img_url %>"width=200> </li>
-                
-                <!-- // post form to delete a recipe on my faves list -->
-                <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
-                    <input type="submit" value="Delete">
-                </form>
-                 <!-- // post form to leave a comment from the faves list -->
-                <form method="POST" action="/favorites/<%= favorites.id %>/comment">
-                <div class="form-group">   
-                    <input type="text" class="form-control" id="commentContent" name="content" placeholder="Leave a review" required>     
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form></br>
+                <div class="row">
+                    <div class="col s12 m7">
+                      <div class="card">
+                        <div class="card-image medium">
+                            <img src="<%= favorites.img_url %>"width=200>
+                          <span class="card-title">From: <%= favorites.source %> </span>
+                        </div>
+                        <div class="card-content">
+                            <p><%= favorites.name %> 
+                            </p>
+                            
+                        </div>
+                        <div class="card-action">
+                            <a href="<%= favorites.url %>">Get Recipe</a>
+                                <!-- // favorite button to add to favorite list -->
+                                <form method="POST" action="/favorites/<%= favorites.id %>?_method=DELETE">
+                                    <input type="submit" value="Delete">
+                                </form>
+                                 <!-- // post form to leave a comment from the faves list -->
+                                <form method="POST" action="/favorites/<%= favorites.id %>/comment">
+                                <div class="form-group">   
+                                    <input type="text" class="form-control" id="commentContent" name="content" placeholder="Leave a review" required>     
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                                 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             <% }) %>
     
         </ul> 

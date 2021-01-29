@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+    <title>Delicious Recipes </title>
+</head>
+<body>
+        <header>
+            
+            <!-- // navbar container -->
+            <nav class="navbar">
+                <div>  
+                <h1 class="title">≋D≋e≋l≋i≋c≋i≋o≋u≋s≋ ≋R≋e≋c≋i≋p≋e≋s≋ </h1>
+                    
+                    <ul class="bc">
+                        <% if (!currentUser) { %> 
+                            <li class="signup"><a href="/auth/signup">SignUp</a></li>
+                            <li class="signup"><a href="/auth/login">LogIn/</a></li>
+                            <% } else { %>
+                                <li class="signup"><a href="/auth/logout">LogOut</a></li>
+                                <li class="signup"><a href="/profile">Profile/</a></li>
+                                <% } %>
+                            <div class="dropdown">
+                                <button class="dropbtn">░P░a░n░t░r░y░</button>
+                                <div class="dropdown-content">
+                                    <a href="/">Home</a>
+                                    <a href="/favorites">Faves</a>
+                                    <a href="/profile">Profile</a>
+                                </div>
+                            </div>
+                    </ul>
+                </div>
+            </nav>
+        </header> 
+    <%- include('partials/alerts') %>
+    <%- body %>
+    
+
+    
+</body>
+</html>

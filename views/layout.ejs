@@ -6,41 +6,39 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> --> 
+
     <title>Delicious Recipes </title>
 </head>
 <body>
-        <header>
-            
-            <!-- // navbar container -->
-            <nav class="navbar">
-                <div>  
-                <h1 class="title">≋D≋e≋l≋i≋c≋i≋o≋u≋s≋ ≋R≋e≋c≋i≋p≋e≋s≋ </h1>
-                    
-                    <ul class="bc">
-                        <% if (!currentUser) { %> 
-                            <li class="signup"><a href="/auth/signup">SignUp</a></li>
-                            <li class="signup"><a href="/auth/login">LogIn/</a></li>
-                            <% } else { %>
-                                <li class="signup"><a href="/auth/logout">LogOut</a></li>
-                                <li class="signup"><a href="/profile">Profile/</a></li>
-                                <% } %>
-                            <div class="dropdown">
-                                <button class="dropbtn">░P░a░n░t░r░y░</button>
-                                <div class="dropdown-content">
-                                    <a href="/">Home</a>
-                                    <a href="/favorites">Faves</a>
-                                    <a href="/profile">Profile</a>
-                                </div>
-                            </div>
-                    </ul>
+            <nav>
+                <div class="nav-wrapper green lighten-1">
+                  <a href="/" class="brand-logo center">𝕮𝕽</a>
+                  <ul class="bc">
+                    <% if (!currentUser) { %> 
+                        <li class="signup"><a href="/auth/signup">SignUp</a></li>
+                        <li class="signup"><a href="/auth/login">LogIn</a></li>
+                        <% } else { %>
+                            <li class="signup"><a href="/auth/logout">LogOut</a></li>
+                            <li class="signup"><a href="/profile">Profile</a></li>
+                            <% } %>        
+                </ul>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/favorites">Favorites</a></li>
+                    <li class="active"><a href="collapsible.html">Contact</a></li>
+                  </ul>
                 </div>
-            </nav>
-        </header> 
+              </nav>
+              
+           
     <%- include('partials/alerts') %>
     <%- body %>
     
-
-    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>

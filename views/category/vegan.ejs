@@ -5,38 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body class="container">
-    <h1>Vegan results</h1>
-    <div>
-        <!-- Vegan show page -->
-        <% result.forEach(result=>{%>
-            <div class="mom">
-                <p class="dogo">
-                    From: <%= result.recipe.source %></br>
-                    <a href="<%= result.recipe.url %>">Get Recipe</a>
-                </p></br>  
-                <p class="dogo"><%= result.recipe.label %></br>
-                </p></br><p class="dogo">
-                    Calories: <%= Math.floor(result.recipe.calories) %>
-                </p></br>
-                <p class="dogo">
-                    <img src="<%= result.recipe.image %>"width=200>
-                </p> </br>
-                <p>
-                    <div class="btn-primary">
-                        <!-- // favorite button to add to favorite list -->
-                        <form method="POST" action="/favorites">
-                            <input hidden type="text" name="name" value="<%= result.recipe.label %>">
-                            <input hidden type="text" name="img_url" value="<%= result.recipe.image %>">
-                            <input hidden type="text" name="url" value="<%= result.recipe.url %>">
-                            <input hidden type="text" name="source" value="<%= result.recipe.source %>">
-                        <button class="primary" type="submit">Add to Favorite</button>
-                        </form></br>  
-                    </div>
-                </p>
-
-            <% }) %>
+<body >
+    <div class="row">
+        
+        <form class="col s12" method="GET" action="/recipes">
+          <div class="row">
+            <div class="input-field col s5">
+              <input placeholder="Enter recipe Name" id="recipeName" type="text" name="q" class="validate">
             </div>
+            <input type="submit" value="search" id="Search" >
+        </form>
     </div>
+
+  <h1>Vegan results</h1>
+
+    <div class="article-listing">
+        <!-- // recipe show page -->
+        <% result.forEach(result=>{%>
+            <div class="row ">
+                <div class="col s12 m7">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="<%= result.recipe.image %>"width=200>
+                      
+                    </div>
+                    <div class="card-content">
+                        <!-- <span class="card-title">From: <%= result.recipe.source %></span> -->
+                        <p>From: <%= result.recipe.source %></p>
+                        <p><%= result.recipe.label %>
+                        </p>
+                        <p>
+                            Calories: <%= Math.floor(result.recipe.calories) %>
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="<%= result.recipe.url %>">Get Recipe</a>
+                            <!-- // favorite button to add to favorite list -->
+                            <form method="POST" action="/favorites" id="doga">
+                                <input hidden type="text" name="name" value="<%= result.recipe.label %>">
+                                <input hidden type="text" name="img_url" value="<%= result.recipe.image %>">
+                                <input hidden type="text" name="url" value="<%= result.recipe.url %>">
+                                <input hidden type="text" name="source" value="<%= result.recipe.source %>">
+                            <button id="doga" type="submit">Add to Favorite</button>
+                            </form></br> 
+                             
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+            
+            
+    </div>
+    <div class="article-listing">
+        <ul class="pagination">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+    
 </body>
 </html>
