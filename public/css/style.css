@@ -13,15 +13,14 @@ body {
 
 /* home page container */
 
-/* wrapper 2 login form*/
 .body_img {
     /* width: 50%; */
-    height: 80vh; 
-    background-image: url("./img/logo_transparent_background.png");
+    height: 100vh; 
+    background-image: url("https://images.unsplash.com/photo-1556178676-00b901fb09b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
 }
 
 a {
@@ -103,20 +102,6 @@ h4 {
     position: relative;
 }
 
-/* recipe result page */
-/* .container { */
-    /* padding: 0px; */
-    /* background-color: #d1ac97;
-    background-image: linear-gradient(62deg, #d1ac97 0%, #cba039 100%); */
-    /* text-align: center; */
-    /* flex-direction: column; */
-    /* justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    list-style-type: none;  */
-    /* display: grid; */
-/* }  */
 
 .category {
     color: white;
@@ -265,7 +250,7 @@ a.middle-indicator-text {
     visibility: hidden;
  }
 
-
+/* wrapper 1 login form*/
  .wrapper_one {
     width: 400px;
     height: 320px;
@@ -333,12 +318,10 @@ a.middle-indicator-text {
     text-align: center;
 }
 
-.home_container {
-    color: #000;
-}
 
 
-/* wrapper 1 sign up form*/
+
+/* wrapper sign up form*/
 .wrapper {
     width: 400px;
     height: 320px;
@@ -405,3 +388,9 @@ h2 {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.collection-item {
+    background: none !important;
+    outline: none;
+    box-sizing: unset;
+  }
