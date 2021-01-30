@@ -8,7 +8,7 @@ body {
      /* background-repeat:no-repeat;
     -webkit-background-size: cover;
     background-size: 100%;   */
-    font-family: 'Dancing Script', cursive;
+    /* font-family: 'Dancing Script', cursive; */
 }
 
 
@@ -428,3 +428,14 @@ h2 {
     position: relative;
 }
  
+.lpi {
+    display: inline-flex;
+    
+    /* flex-direction: column; */
+    justify-content: center;
+    
+    align-items: center;
+    display: grid;
+    font-family: 'Dancing Script', cursive;
+    
+}
