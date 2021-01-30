@@ -21,7 +21,7 @@ body {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 a {
@@ -402,10 +402,29 @@ h2 {
     box-sizing: unset;
   }
 
+  .collection .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid transparent !important;
+}
+
+
   #pop {
     border-radius: 9px;
     box-sizing: border-box;
     background-color: #f6648b;
   }
 
+
+
+.collection {
+    margin: .5rem 0 1rem 0;
+    border: 1px solid transparent !important;
+
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
  
