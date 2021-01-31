@@ -15,13 +15,18 @@ body {
 /* home page container */
 
 .body_img {
-    /* width: 50%; */
-    height: 100vh; 
     background-image: url("https://images.unsplash.com/photo-1556178676-00b901fb09b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80");
     background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 100vh; 
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      justify-content: space-between;
+      width: 100vw;
+      z-index: 1;
 }
 
 a {
@@ -50,6 +55,7 @@ footer {
 
    }
 #Search {
+    margin-left: -25px;
     cursor: pointer;
     font-size: 15px;
     border-radius: 9px;
@@ -85,13 +91,6 @@ h4 {
     color: #fff;
 }
 
-.bc {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    /* overflow: hidden;  */
-    /* background-color: #333333; */ 
-}
 
 
 
@@ -439,3 +438,49 @@ h2 {
     font-family: 'Dancing Script', cursive;
     
 }
+
+/* #slider {
+    overflow: hidden;
+}
+#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+
+ #slider figure img {
+    width: 20%;
+    float: left;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    70% {
+        left: -300%;
+    }
+    90% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+}  */

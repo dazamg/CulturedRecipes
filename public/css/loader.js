@@ -1,18 +1,33 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var carouselElems = document.querySelector('.carousel.carousel-slider');
-      var carouselInstance = M.Carousel.init(carouselElems, {
-          fullWidth: true,
-          indicators: true
-      });
- 
-  function moveNextCarousel() {
-      var elems = document.querySelector('.carousel.carousel-slider');
-      var moveRight = M.Carousel.getInstance(elems);
-      moveRight.next(1);
-  }
-  function movePrevCarousel() {
-      var elems = document.querySelector('.carousel.carousel-slider');
-      var moveLeft = M.Carousel.getInstance(elems);
-      moveLeft.prev(1);
-  }
-});
+countYellowStars = () => {
+    let arr = []
+    let stars = document.getElementsByClassName("star")
+    for(let i = 0; i < stars.length; i++) {
+        if (stars[i].style.color === "gold") {
+            arr.push(stars[i].style.color)
+        }
+    }
+    this.setState({
+        rating:arr.length
+    })
+}
+
+changeStarColor = event => {   
+    let element = document.getElementById(event.target.id)
+
+    let starId = parseInt(element.id)
+    let strId = "";
+    let i = 1
+    while (i <= starId) {
+        strId = i.toString()
+        let gold = document.getElementById(strId)
+        gold.style.color = "gold"
+        i++
+    }
+    while (i <= 5) {
+        strId = i.toString()
+        let white = document.getElementById(strId)
+        white.style.color = "white"
+        i++
+    }
+    this.countYellowStars()
+}
